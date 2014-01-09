@@ -1,0 +1,21 @@
+# GIT ALIASES
+alias glg 'git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
+alias gst 'git status -s -b'
+alias gci 'git commit -a -m'
+alias gco 'git pull --rebase'
+
+# CLEARCASE ALIASES
+alias cpre 'ct diff -pre'
+alias ctci 'ct ci'
+alias ctco 'ct co'
+alias ctlsc 'ct lsc'
+alias crm 'ct rmname'
+alias cln 'ct ln -s'
+alias coi 'ct lsco -cview -short -avobs'
+
+# MISC ALIASES
+alias e /usr/bin/emacs
+
+
+
+
