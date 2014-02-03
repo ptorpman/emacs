@@ -130,7 +130,6 @@
 
 (setq visible-bell t)
 
-;;(set-face-font 'default "-adobe-courier-medium-r-normal--12-*-*-*-*-*-*-*")
 
 
 ;; Save all tempfiles in $TMPDIR/emacs$UID
@@ -142,14 +141,17 @@
 (setq auto-save-list-file-prefix
       emacs-tmp-dir)
 
-;;(load-theme 'zenburn)
 
 ;; (add-to-list 'load-path "~/elisp/git-modes")
 ;; (add-to-list 'load-path "~/elisp/magit")
 ;; (require 'magit)
 ;; (autoload 'magit-status "magit" nil t)
 
+
+;;(set-face-font 'default "-adobe-courier-medium-r-normal--12-*-*-*-*-*-*-*")
+
+;;(set-face-font 'default "-misc-fixed-medium-r-semicondensed-*-*-120-*-*-*-*-*-*")
 (load "~/elisp/pink-bliss.el")
 (pink-bliss)
-
-(set-face-attribute 'default nil :family "Inconsolata" :height 105) 
+;;(load-theme 'zenburn)
+(set-face-attribute 'default nil :family "Inconsolata" :height 120) 
