@@ -80,9 +80,14 @@
  '(column-number-mode t)
  '(compilation-scroll-output t)
  '(compile-command "make ")
+ '(cua-delete-selection nil)
+ '(cua-enable-cua-keys nil)
+ '(cua-remap-control-v nil)
+ '(cua-remap-control-z nil)
  '(current-language-environment "UTF-8")
- '(custom-theme-directory "~/elisp")
- '(default-frame-alist (quote ((menu-bar-lines . 1) (vertical-scroll-bars . right) (tool-bar-lines . 0) (witdh . 130))))
+ '(custom-safe-themes (quote ("d96768f6fb4ccf7f443f0c1f95cf710fd0fafb1b5b042670f83078b516ab1f1e" "c712d616ea5a9ef4e513681846eb908728bbb087c2d251ded8374ee9faafa199" default)))
+ '(custom-theme-directory "/home/epetorp/elisp")
+ '(default-frame-alist (quote ((menu-bar-lines . 1) (witdh . 130))))
  '(default-input-method "rfc1345")
  '(delete-auto-save-files nil)
  '(delete-selection-mode t nil (delsel))
@@ -96,6 +101,7 @@
  '(gutter-buffers-tab-visible-p nil)
  '(imenu-auto-rescan t)
  '(imenu-sort-function (quote imenu--sort-by-name))
+ '(indent-tabs-mode nil)
  '(indicate-buffer-boundaries (quote right))
  '(mode-line-in-non-selected-windows t)
  '(mode-line-inverse-video t)
@@ -114,7 +120,7 @@
  '(which-function-mode t))
 
 
-(add-to-list 'load-path "~/elisp")
+(add-to-list 'load-path "/home/epetorp/elisp")
 (require 'clearcase)
 (setq clearcase-use-normal-diff 1)
 (add-to-list 'clearcase-normal-diff-arguments "-b")
@@ -126,20 +132,16 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(cperl-array-face ((t (:foreground "Blue" :weight bold))))
- '(cperl-hash-face ((t (:foreground "Red" :slant italic :weight bold))))
- '(cperl-nonoverridable-face ((t (:foreground "blue2"))))
- '(region ((t (:background "blue" :foreground "yellow"))))
- '(show-paren-match ((t (:background "#3B5998" :foreground "yellow" :weight bold))))
- '(show-paren-mismatch ((t (:background "red" :foreground "yellow" :weight bold)))))
-
+ '(cperl-array-face ((t (:foreground "cyan" :weight bold))) t)
+ '(cperl-hash-face ((t (:foreground "Red" :slant italic :weight bold))) t)
+ '(cperl-nonoverridable-face ((t (:foreground "lightgreen"))) t))
 
 
 ;;(pending-delete-mode)
 
 ;; Confirm exit
 (setq confirm-kill-emacs 'yes-or-no-p)
-;;(setq show-paren-style 'expression)
+(setq show-paren-style 'expression)
 (setq make-backup-files nil)
 
 (setq cperl-indent-level 4
@@ -168,15 +170,25 @@
 ;; (autoload 'magit-status "magit" nil t)
 
 
+(setq custom-theme-load-path '())
+(add-to-list 'custom-theme-load-path "/home/epetorp/elisp")
+
+;;(load "~/elisp/pink-bliss2.el")
+;;(pink-bliss2)
+
+(load-theme 'blue-mood)
+;;(load-theme 'xemacs)
+
 ;;(set-face-font 'default "-adobe-courier-medium-r-normal--12-*-*-*-*-*-*-*")
-;;(set-face-font 'default "-misc-fixed-medium-r-semicondensed-*-*-120-*-*-*-*-*-*")
-(set-face-attribute 'default nil :family "Fantasque Sans Mono" :height 130)
-
-;;(load "~/elisp/pink-bliss.el")
-;;(pink-bliss)
-(load-theme 'zenburn)
-;;(set-face-attribute 'default nil :family "Anonymous Pro" :height 120)
-
+;;(set-face-font 'default "-misc-fixed-medium-r-semicondensed-*-*-150-*-*-*-*-*-*")
+;;(set-face-font 'default "-*-terminus-medium-r-*-*-12-*-*-*-*-*-iso8859-1")
+;;(set-face-attribute 'default nil :family "Anonymous Pro" :height 110)
+(set-face-attribute 'default nil :family "Fantasque Sans Mono" :height 110)
+;;(set-face-attribute 'default nil :family "Ubuntu Mono" :height 120 :background "#1f1f1f1f1f1f" :foreground "#dcdcdcdccccc")
+;;(set-face-attribute 'default nil :family "Fantasque Sans Mono" :height 120 :background "#1f1f1f1f1f1f" :foreground "#dcdcdcdccccc")
+;;(set-face-attribute 'default nil :family "Ubuntu Mono" :height 120 )
 
 
 (set-frame-size-according-to-resolution)
+
+
