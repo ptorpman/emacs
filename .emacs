@@ -19,14 +19,18 @@
          (cons 'height (/ (- (x-display-pixel-height) 100)
                              (frame-char-height)))))))
 
+
+;;----------------------------------------------------------
+;; Key bindings
+;;----------------------------------------------------------
 (global-set-key [(control x) (control b)] 'electric-buffer-list)
 (global-set-key [(insert)] nil)
+(global-set-key [(f1)] 'next-error)
+(global-set-key [(f6)] 'query-replace)
 (global-set-key [(f11)] 'grep)
 (global-set-key [(f12)] 'compile)
 (global-set-key [(control z)] nil)
-(global-set-key [(f1)] 'next-error)
 (global-set-key "\M-," (lambda nil (interactive) (find-tag "" t)))
-(global-set-key [(f6)] 'query-replace)
 (global-set-key "\C-c\C-r" 'comment-region)
 (global-set-key "\C-xvt" 'clearcase-gui-vtree-browser-current-buffer)
 (global-set-key "\M-g" 'goto-line)
@@ -34,13 +38,15 @@
 (global-set-key [(meta control left)] 'backward-sexp)
 (global-set-key [(meta control right)] 'forward-sexp)
 
+;;----------------------------------------------------------
+;; Imenu
+;;----------------------------------------------------------
 (add-hook 'c-mode-hook 'imenu-add-menubar-index)
 (add-hook 'c++-mode-hook 'imenu-add-menubar-index)
 (add-hook 'java-mode-hook 'imenu-add-menubar-index)
 (add-hook 'python-mode-hook 'imenu-add-menubar-index)
 (add-hook 'perl-mode-hook 'imenu-add-menubar-index)
 (add-hook 'shell-script-mode-hook 'imenu-add-menubar-index)
-
 
 ;; Verify file creation
 (add-hook 'find-file-not-found-functions
@@ -49,30 +55,77 @@
                                     buffer-file-name)) (keyboard-quit)) nil) t)
 
 (add-to-list 'c-mode-hook (lambda nil (abbrev-mode -1)))
+(add-to-list 'load-path "/home/epetorp/elisp")
 
-(defun toggle-fullscreen (&optional f)
-  (interactive)
-  (let ((current-value (frame-parameter nil 'fullscreen)))
-    (set-frame-parameter nil 'fullscreen
-                         (if (equal 'fullboth current-value)
-                             (if (boundp 'old-fullscreen) old-fullscreen nil)
-                           (progn (setq old-fullscreen current-value)
-                                  'fullboth)))))
-(global-set-key [f9] 'toggle-fullscreen)
+;;----------------------------------------------------------
+;; ClearCase
+;;----------------------------------------------------------
+(require 'clearcase)
+(setq clearcase-use-normal-diff 1)
+(add-to-list 'clearcase-normal-diff-arguments "-b")
+
+;;----------------------------------------------------------
+;; Perl
+;;----------------------------------------------------------
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(cperl-array-face ((t (:foreground "cyan" :weight bold))) t)
+ '(cperl-hash-face ((t (:foreground "Red" :slant italic :weight bold))) t)
+ '(cperl-nonoverridable-face ((t (:foreground "lightgreen"))) t))
+
+
+;;----------------------------------------------------------
+;; Variable Customization
+;;----------------------------------------------------------
+;; Confirm exit
+(setq confirm-kill-emacs 'yes-or-no-p)
+(setq show-paren-style 'expression)
+(setq make-backup-files nil)
+(setq visible-bell t)
+(setq custom-theme-load-path '())
+(add-to-list 'custom-theme-load-path "/home/epetorp/elisp")
+
+
+;;----------------------------------------------------------
+;; Temporary files
+;;----------------------------------------------------------
+;; Save all tempfiles in $TMPDIR/emacs$UID
+(defconst emacs-tmp-dir (format "%s/%s%s/" temporary-file-directory "emacs" (user-uid)))
+(setq backup-directory-alist
+      `((".*" . ,emacs-tmp-dir)))
+(setq auto-save-file-name-transforms
+      `((".*" ,emacs-tmp-dir t)))
+(setq auto-save-list-file-prefix
+      emacs-tmp-dir)
+
+
+;;----------------------------------------------------------
+;; Appearance
+;;----------------------------------------------------------
+;; (load "~/elisp/pink-bliss.el")
+;; (pink-bliss)
+(load-theme 'emacs-21)
+;;(set-face-attribute 'default nil :family "Fantasque Sans Mono" :height 110)
+;;(set-face-attribute 'default nil :family "Anonymous Pro" :height 110)
+;;(set-face-attribute 'default nil :family "Envy Code R" :height 110)
+;;(set-face-attribute 'default nil :family "Droid Sans Mono" :height 110)
+(set-face-attribute 'default nil :family "Monaco" :height 95)
+
+;;(set-face-attribute 'default nil :family "courier" :height 100)
+
+(set-frame-size-according-to-resolution)
 
 
 
-
-
-
-;;(load-theme 'torpman)
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(abbrev-mode nil)
- '(ansi-color-names-vector ["#FFFFDD" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#000000"])
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(abbrev-mode nil t)
  '(auto-save-default nil)
  '(blink-cursor-mode nil)
  '(case-fold-search t)
@@ -80,21 +133,21 @@
  '(column-number-mode t)
  '(compilation-scroll-output t)
  '(compile-command "make ")
+ '(cperl-indent-level 4)
  '(cua-delete-selection nil)
  '(cua-enable-cua-keys nil)
  '(cua-remap-control-v nil)
  '(cua-remap-control-z nil)
  '(current-language-environment "UTF-8")
- '(custom-safe-themes (quote ("d96768f6fb4ccf7f443f0c1f95cf710fd0fafb1b5b042670f83078b516ab1f1e" "c712d616ea5a9ef4e513681846eb908728bbb087c2d251ded8374ee9faafa199" default)))
+ '(custom-safe-themes (quote ("a3821772b5051fa49cf567af79cc4dabfcfd37a1b9236492ae4724a77f42d70d" "b42cf9ee9e59c3aec585fff1ce35acf50259d8b59f3047e57df0fa38516aa335" "0ae977e603e99d89c80d679377bfed4a904317968bd885ee063455cee01728d3" "d96768f6fb4ccf7f443f0c1f95cf710fd0fafb1b5b042670f83078b516ab1f1e" "8016855a07f289a6b2deb248e192633dca0165f07ee5d51f9ba982ec2c36797d" "e4a37a67a646afe50263ed5a36c74e6dec615139065bbffe80beb2fb1b582047" default)))
  '(custom-theme-directory "/home/epetorp/elisp")
- '(default-frame-alist (quote ((menu-bar-lines . 1) (witdh . 130))))
  '(default-input-method "rfc1345")
  '(delete-auto-save-files nil)
  '(delete-selection-mode t nil (delsel))
- '(fci-rule-color "#383838")
  '(font-lock-maximum-decoration t)
  '(font-lock-mode t t (font-lock))
  '(global-font-lock-mode t nil (font-lock))
+ '(global-guess-style-info-mode t)
  '(global-hl-line-mode nil)
  '(grep-command "grep -nH -i  ")
  '(grep-scroll-output t)
@@ -106,89 +159,43 @@
  '(mode-line-in-non-selected-windows t)
  '(mode-line-inverse-video t)
  '(paren-mode (quote sexp) t (paren))
- '(python-indent-guess-indent-offset t)
+ '(python-indent 4)
  '(python-indent-offset 4)
  '(require-final-newline t)
  '(scroll-bar-mode (quote right))
  '(show-paren-mode t nil (paren))
+ '(tab-width 4)
  '(tool-bar-mode nil nil (tool-bar))
  '(toolbar-visible-p nil)
  '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify))
- '(vc-annotate-background "#2B2B2B")
- '(vc-annotate-color-map (quote ((20 . "#BC8383") (40 . "#CC9393") (60 . "#DFAF8F") (80 . "#D0BF8F") (100 . "#E0CF9F") (120 . "#F0DFAF") (140 . "#5F7F5F") (160 . "#7F9F7F") (180 . "#8FB28F") (200 . "#9FC59F") (220 . "#AFD8AF") (240 . "#BFEBBF") (260 . "#93E0E3") (280 . "#6CA0A3") (300 . "#7CB8BB") (320 . "#8CD0D3") (340 . "#94BFF3") (360 . "#DC8CC3"))))
- '(vc-annotate-very-old-color "#DC8CC3")
  '(which-function-mode t))
 
 
-(add-to-list 'load-path "/home/epetorp/elisp")
-(require 'clearcase)
-(setq clearcase-use-normal-diff 1)
-(add-to-list 'clearcase-normal-diff-arguments "-b")
+;;----------------------------------------------------------
+;; Guess Style
+;;----------------------------------------------------------
+(load "guess-style")
+(autoload 'guess-style-set-variable "guess-style" nil t)
+(autoload 'guess-style-guess-variable "guess-style")
+(autoload 'guess-style-guess-all "guess-style" nil t)
+
+;;----------------------------------------------------------
+;; Smart Tabs
+;;----------------------------------------------------------
+(load "smart-tabs-mode")
+
+(smart-tabs-advice python-indent-line-1 python-indent)
+(add-hook 'python-mode-hook
+		  (lambda ()
+			(setq indent-tabs-mode nil)
+			(setq tab-width (default-value 'tab-width))))
+(smart-tabs-advice py-indent-line py-indent-offset)
+(smart-tabs-advice py-newline-and-indent py-indent-offset)
+(smart-tabs-advice py-indent-region py-indent-offset)
 
 
-
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(cperl-array-face ((t (:foreground "cyan" :weight bold))) t)
- '(cperl-hash-face ((t (:foreground "Red" :slant italic :weight bold))) t)
- '(cperl-nonoverridable-face ((t (:foreground "lightgreen"))) t))
-
-
-;;(pending-delete-mode)
-
-;; Confirm exit
-(setq confirm-kill-emacs 'yes-or-no-p)
-(setq show-paren-style 'expression)
-(setq make-backup-files nil)
-
-(setq cperl-indent-level 4
-      cperl-close-paren-offset -4
-      cperl-continued-statement-offset 4
-      cperl-indent-parens-as-block t
-      cperl-tab-always-indent t)
-
-(setq visible-bell t)
-
-
-
-;; Save all tempfiles in $TMPDIR/emacs$UID
-(defconst emacs-tmp-dir (format "%s/%s%s/" temporary-file-directory "emacs" (user-uid)))
-(setq backup-directory-alist
-      `((".*" . ,emacs-tmp-dir)))
-(setq auto-save-file-name-transforms
-      `((".*" ,emacs-tmp-dir t)))
-(setq auto-save-list-file-prefix
-      emacs-tmp-dir)
-
-
-;; (add-to-list 'load-path "~/elisp/git-modes")
-;; (add-to-list 'load-path "~/elisp/magit")
-;; (require 'magit)
-;; (autoload 'magit-status "magit" nil t)
-
-
-(setq custom-theme-load-path '())
-(add-to-list 'custom-theme-load-path "/home/epetorp/elisp")
-
-;;(load "~/elisp/pink-bliss2.el")
-;;(pink-bliss2)
-
-(load-theme 'blue-mood)
-;;(load-theme 'xemacs)
-
-;;(set-face-font 'default "-adobe-courier-medium-r-normal--12-*-*-*-*-*-*-*")
-;;(set-face-font 'default "-misc-fixed-medium-r-semicondensed-*-*-150-*-*-*-*-*-*")
-;;(set-face-font 'default "-*-terminus-medium-r-*-*-12-*-*-*-*-*-iso8859-1")
-;;(set-face-attribute 'default nil :family "Anonymous Pro" :height 110)
-(set-face-attribute 'default nil :family "Fantasque Sans Mono" :height 110)
-;;(set-face-attribute 'default nil :family "Ubuntu Mono" :height 120 :background "#1f1f1f1f1f1f" :foreground "#dcdcdcdccccc")
-;;(set-face-attribute 'default nil :family "Fantasque Sans Mono" :height 120 :background "#1f1f1f1f1f1f" :foreground "#dcdcdcdccccc")
-;;(set-face-attribute 'default nil :family "Ubuntu Mono" :height 120 )
-
-
-(set-frame-size-according-to-resolution)
-
-
+(add-hook 'python-mode-hook
+  (lambda ()
+    (setq indent-tabs-mode nil)
+    (setq python-indent 4)
+    (setq tab-width 4)))
