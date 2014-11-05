@@ -67,14 +67,6 @@
 ;;----------------------------------------------------------
 ;; Perl
 ;;----------------------------------------------------------
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(cperl-array-face ((t (:foreground "cyan" :weight bold))) t)
- '(cperl-hash-face ((t (:foreground "Red" :slant italic :weight bold))) t)
- '(cperl-nonoverridable-face ((t (:foreground "lightgreen"))) t))
 
 
 ;;----------------------------------------------------------
@@ -105,27 +97,39 @@
 ;;----------------------------------------------------------
 ;; Appearance
 ;;----------------------------------------------------------
-;; (load "~/elisp/pink-bliss.el")
-;; (pink-bliss)
-(load-theme 'emacs-21)
-;;(set-face-attribute 'default nil :family "Fantasque Sans Mono" :height 110)
-;;(set-face-attribute 'default nil :family "Anonymous Pro" :height 110)
-;;(set-face-attribute 'default nil :family "Envy Code R" :height 110)
-;;(set-face-attribute 'default nil :family "Droid Sans Mono" :height 110)
-(set-face-attribute 'default nil :family "Monaco" :height 95)
+(load "~/elisp/pink-bliss.el")
+(pink-bliss)
 
+;;(load-theme 'xemacs)
+;;(load-theme 'torpman-blue)
+;;(set-face-font 'default "Letter Gothic-13"))
+;;(set-face-font 'default "Source Code Pro-12")
+;;(load-theme 'solarized-dark)
+;;(set-face-attribute 'default nil :family "Fantasque Sans Mono" :height 130)
+;;(set-face-attribute 'default nil :family "Menlo" :height 120)
+;;(set-face-attribute 'default nil :family "Letter Gothic" :height 120)
+;;(set-face-attribute 'default nil :family "Anonymous Pro" :height 140)
+;;(set-face-attribute 'default nil :family "Envy Code R" :height 130)
+(set-face-attribute 'default nil :family "Droid Sans Mono" :height 90)
+;;(set-face-attribute 'default nil :family "Inconsolata" :height 130)
 ;;(set-face-attribute 'default nil :family "courier" :height 100)
+;;(set-face-attribute 'default nil :family "Terminus (TTF)" :height 127)
+;;(set-face-attribute 'default nil :family "Monaco" :height 90)
+;;(set-face-attribute 'default nil :family "Ubuntu Mono" :height 135)
+;;(set-face-font 'default "-adobe-courier-medium-r-normal-*-12-*-*-*-*-*-iso8859-1")
+;;(set-face-font 'default "Bitstream Vera Sans Mono-12")
+;;(set-face-attribute 'default nil :family "Bitstream Vera Sans Mono" :height 110)
+
 
 (set-frame-size-according-to-resolution)
 
 
-
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(abbrev-mode nil t)
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(abbrev-mode nil)
  '(auto-save-default nil)
  '(blink-cursor-mode nil)
  '(case-fold-search t)
@@ -139,7 +143,7 @@
  '(cua-remap-control-v nil)
  '(cua-remap-control-z nil)
  '(current-language-environment "UTF-8")
- '(custom-safe-themes (quote ("a3821772b5051fa49cf567af79cc4dabfcfd37a1b9236492ae4724a77f42d70d" "b42cf9ee9e59c3aec585fff1ce35acf50259d8b59f3047e57df0fa38516aa335" "0ae977e603e99d89c80d679377bfed4a904317968bd885ee063455cee01728d3" "d96768f6fb4ccf7f443f0c1f95cf710fd0fafb1b5b042670f83078b516ab1f1e" "8016855a07f289a6b2deb248e192633dca0165f07ee5d51f9ba982ec2c36797d" "e4a37a67a646afe50263ed5a36c74e6dec615139065bbffe80beb2fb1b582047" default)))
+ '(custom-safe-themes (quote ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "a3821772b5051fa49cf567af79cc4dabfcfd37a1b9236492ae4724a77f42d70d" "b42cf9ee9e59c3aec585fff1ce35acf50259d8b59f3047e57df0fa38516aa335" "0ae977e603e99d89c80d679377bfed4a904317968bd885ee063455cee01728d3" "d96768f6fb4ccf7f443f0c1f95cf710fd0fafb1b5b042670f83078b516ab1f1e" "8016855a07f289a6b2deb248e192633dca0165f07ee5d51f9ba982ec2c36797d" "e4a37a67a646afe50263ed5a36c74e6dec615139065bbffe80beb2fb1b582047" default)))
  '(custom-theme-directory "/home/epetorp/elisp")
  '(default-input-method "rfc1345")
  '(delete-auto-save-files nil)
@@ -199,3 +203,5 @@
     (setq indent-tabs-mode nil)
     (setq python-indent 4)
     (setq tab-width 4)))
+
+
