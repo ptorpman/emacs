@@ -97,31 +97,31 @@
 ;;----------------------------------------------------------
 ;; Appearance
 ;;----------------------------------------------------------
-(load "~/elisp/pink-bliss.el")
-(pink-bliss)
+;; (load "~/elisp/pink-bliss.el")
+;; (pink-bliss)
 
 ;;(load-theme 'xemacs)
-;;(load-theme 'torpman-blue)
+(load-theme 'tomorrow-night-blue)
 ;;(set-face-font 'default "Letter Gothic-13"))
 ;;(set-face-font 'default "Source Code Pro-12")
 ;;(load-theme 'solarized-dark)
 ;;(set-face-attribute 'default nil :family "Fantasque Sans Mono" :height 130)
-;;(set-face-attribute 'default nil :family "Menlo" :height 120)
+(set-face-attribute 'default nil :family "Menlo" :height 134)
 ;;(set-face-attribute 'default nil :family "Letter Gothic" :height 120)
 ;;(set-face-attribute 'default nil :family "Anonymous Pro" :height 140)
 ;;(set-face-attribute 'default nil :family "Envy Code R" :height 130)
-(set-face-attribute 'default nil :family "Droid Sans Mono" :height 90)
+;;(set-face-attribute 'default nil :family "Droid Sans Mono" :height 110)
 ;;(set-face-attribute 'default nil :family "Inconsolata" :height 130)
 ;;(set-face-attribute 'default nil :family "courier" :height 100)
 ;;(set-face-attribute 'default nil :family "Terminus (TTF)" :height 127)
-;;(set-face-attribute 'default nil :family "Monaco" :height 90)
+;;(set-face-attribute 'default nil :family "Monaco" :height 100)
 ;;(set-face-attribute 'default nil :family "Ubuntu Mono" :height 135)
 ;;(set-face-font 'default "-adobe-courier-medium-r-normal-*-12-*-*-*-*-*-iso8859-1")
 ;;(set-face-font 'default "Bitstream Vera Sans Mono-12")
 ;;(set-face-attribute 'default nil :family "Bitstream Vera Sans Mono" :height 110)
 
 
-(set-frame-size-according-to-resolution)
+;;(set-frame-size-according-to-resolution)
 
 
 (custom-set-variables
