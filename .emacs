@@ -32,7 +32,7 @@
 (global-set-key [(control z)] nil)
 (global-set-key "\M-," (lambda nil (interactive) (find-tag "" t)))
 (global-set-key "\C-c\C-r" 'comment-region)
-(global-set-key "\C-xvt" 'clearcase-gui-vtree-browser-current-buffer)
+;;(global-set-key "\C-xvt" 'clearcase-gui-vtree-browser-current-buffer)
 (global-set-key "\M-g" 'goto-line)
 (global-set-key "\M-a" 'align)
 (global-set-key [(meta control left)] 'backward-sexp)
@@ -60,9 +60,9 @@
 ;;----------------------------------------------------------
 ;; ClearCase
 ;;----------------------------------------------------------
-(require 'clearcase)
-(setq clearcase-use-normal-diff 1)
-(add-to-list 'clearcase-normal-diff-arguments "-b")
+;; (require 'clearcase)
+;; (setq clearcase-use-normal-diff 1)
+;; (add-to-list 'clearcase-normal-diff-arguments "-b")
 
 ;;----------------------------------------------------------
 ;; Perl
@@ -78,7 +78,7 @@
 (setq make-backup-files nil)
 (setq visible-bell t)
 (setq custom-theme-load-path '())
-(add-to-list 'custom-theme-load-path "/home/epetorp/elisp")
+(add-to-list 'custom-theme-load-path "/home/xxtorpmp/emacs/themes")
 
 
 ;;----------------------------------------------------------
@@ -97,43 +97,42 @@
 ;;----------------------------------------------------------
 ;; Appearance
 ;;----------------------------------------------------------
-;; (load "~/elisp/pink-bliss.el")
-;; (pink-bliss)
+(load "~/emacs/themes/pink-bliss.el")
+ (pink-bliss)
 
 ;;(load-theme 'xemacs)
-(load-theme 'tomorrow-night-blue)
+;;(load-theme 'tomorrow-night-blue)
 ;;(set-face-font 'default "Letter Gothic-13"))
 ;;(set-face-font 'default "Source Code Pro-12")
 ;;(load-theme 'solarized-dark)
 ;;(set-face-attribute 'default nil :family "Fantasque Sans Mono" :height 130)
-(set-face-attribute 'default nil :family "Menlo" :height 134)
+;;(set-face-attribute 'default nil :family "Menlo" :height 134)
 ;;(set-face-attribute 'default nil :family "Letter Gothic" :height 120)
 ;;(set-face-attribute 'default nil :family "Anonymous Pro" :height 140)
 ;;(set-face-attribute 'default nil :family "Envy Code R" :height 130)
-;;(set-face-attribute 'default nil :family "Droid Sans Mono" :height 110)
+(set-face-attribute 'default nil :family "Droid Sans Mono" :height 85)
 ;;(set-face-attribute 'default nil :family "Inconsolata" :height 130)
 ;;(set-face-attribute 'default nil :family "courier" :height 100)
 ;;(set-face-attribute 'default nil :family "Terminus (TTF)" :height 127)
-;;(set-face-attribute 'default nil :family "Monaco" :height 100)
-;;(set-face-attribute 'default nil :family "Ubuntu Mono" :height 135)
-;;(set-face-font 'default "-adobe-courier-medium-r-normal-*-12-*-*-*-*-*-iso8859-1")
-;;(set-face-font 'default "Bitstream Vera Sans Mono-12")
+;;(set-face-attribute 'default nil :family "Monaco" :height 85)
+;;(set-face-attribute 'default nil :family "Ubuntu Mono" :height 105)
+;;(set-face-attribute 'default nil :family "Profont" :height 90)
 ;;(set-face-attribute 'default nil :family "Bitstream Vera Sans Mono" :height 110)
 
 
-;;(set-frame-size-according-to-resolution)
+(set-frame-size-according-to-resolution)
 
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(abbrev-mode nil)
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(abbrev-mode nil t)
  '(auto-save-default nil)
  '(blink-cursor-mode nil)
+ '(c-basic-offset 4)
  '(case-fold-search t)
- '(clearcase-suppress-checkout-comments t)
  '(column-number-mode t)
  '(compilation-scroll-output t)
  '(compile-command "make ")
@@ -151,7 +150,6 @@
  '(font-lock-maximum-decoration t)
  '(font-lock-mode t t (font-lock))
  '(global-font-lock-mode t nil (font-lock))
- '(global-guess-style-info-mode t)
  '(global-hl-line-mode nil)
  '(grep-command "grep -nH -i  ")
  '(grep-scroll-output t)
@@ -178,24 +176,24 @@
 ;;----------------------------------------------------------
 ;; Guess Style
 ;;----------------------------------------------------------
-(load "guess-style")
-(autoload 'guess-style-set-variable "guess-style" nil t)
-(autoload 'guess-style-guess-variable "guess-style")
-(autoload 'guess-style-guess-all "guess-style" nil t)
+;; (load "guess-style")
+;; (autoload 'guess-style-set-variable "guess-style" nil t)
+;; (autoload 'guess-style-guess-variable "guess-style")
+;; (autoload 'guess-style-guess-all "guess-style" nil t)
 
 ;;----------------------------------------------------------
 ;; Smart Tabs
 ;;----------------------------------------------------------
-(load "smart-tabs-mode")
+;; (load "smart-tabs-mode")
 
-(smart-tabs-advice python-indent-line-1 python-indent)
-(add-hook 'python-mode-hook
-		  (lambda ()
-			(setq indent-tabs-mode nil)
-			(setq tab-width (default-value 'tab-width))))
-(smart-tabs-advice py-indent-line py-indent-offset)
-(smart-tabs-advice py-newline-and-indent py-indent-offset)
-(smart-tabs-advice py-indent-region py-indent-offset)
+;; (smart-tabs-advice python-indent-line-1 python-indent)
+;; (add-hook 'python-mode-hook
+;; 		  (lambda ()
+;; 			(setq indent-tabs-mode nil)
+;; 			(setq tab-width (default-value 'tab-width))))
+;; (smart-tabs-advice py-indent-line py-indent-offset)
+;; (smart-tabs-advice py-newline-and-indent py-indent-offset)
+;; (smart-tabs-advice py-indent-region py-indent-offset)
 
 
 (add-hook 'python-mode-hook
@@ -205,3 +203,4 @@
     (setq tab-width 4)))
 
 
+(custom-set-faces)
