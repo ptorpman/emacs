@@ -55,7 +55,7 @@
                                     buffer-file-name)) (keyboard-quit)) nil) t)
 
 (add-to-list 'c-mode-hook (lambda nil (abbrev-mode -1)))
-(add-to-list 'load-path "/home/epetorp/elisp")
+(add-to-list 'load-path "/home/peter/emacs")
 
 ;;----------------------------------------------------------
 ;; ClearCase
@@ -78,7 +78,7 @@
 (setq make-backup-files nil)
 (setq visible-bell t)
 (setq custom-theme-load-path '())
-(add-to-list 'custom-theme-load-path "/home/xxtorpmp/emacs/themes")
+(add-to-list 'custom-theme-load-path "/home/peter/emacs/themes/")
 
 
 ;;----------------------------------------------------------
@@ -97,20 +97,27 @@
 ;;----------------------------------------------------------
 ;; Appearance
 ;;----------------------------------------------------------
-(load "~/emacs/themes/pink-bliss.el")
- (pink-bliss)
+;;(load "~/emacs/themes/pink-bliss.el")
+;; (pink-bliss)
 
 ;;(load-theme 'xemacs)
 ;;(load-theme 'tomorrow-night-blue)
 ;;(set-face-font 'default "Letter Gothic-13"))
 ;;(set-face-font 'default "Source Code Pro-12")
 ;;(load-theme 'solarized-dark)
-;;(set-face-attribute 'default nil :family "Fantasque Sans Mono" :height 130)
+;;(load-theme 'ample-flat)
+
+(require 'color-theme)
+(color-theme-initialize)
+(load-file "~/emacs/themes/color-theme-mac-classic.el")
+(color-theme-mac-classic)
+
+;;(set-face-attribute 'default nil :family "Fantasque Sans Mono" :height 105)
 ;;(set-face-attribute 'default nil :family "Menlo" :height 134)
 ;;(set-face-attribute 'default nil :family "Letter Gothic" :height 120)
 ;;(set-face-attribute 'default nil :family "Anonymous Pro" :height 140)
 ;;(set-face-attribute 'default nil :family "Envy Code R" :height 130)
-(set-face-attribute 'default nil :family "Droid Sans Mono" :height 85)
+;;(set-face-attribute 'default nil :family "Droid Sans Mono" :height 85)
 ;;(set-face-attribute 'default nil :family "Inconsolata" :height 130)
 ;;(set-face-attribute 'default nil :family "courier" :height 100)
 ;;(set-face-attribute 'default nil :family "Terminus (TTF)" :height 127)
@@ -118,7 +125,8 @@
 ;;(set-face-attribute 'default nil :family "Ubuntu Mono" :height 105)
 ;;(set-face-attribute 'default nil :family "Profont" :height 90)
 ;;(set-face-attribute 'default nil :family "Bitstream Vera Sans Mono" :height 110)
-
+(set-frame-font "Menlo:pixelsize=12")
+;;(set-frame-font "Envy Code R:pixelsize=13")
 
 (set-frame-size-according-to-resolution)
 
@@ -142,7 +150,9 @@
  '(cua-remap-control-v nil)
  '(cua-remap-control-z nil)
  '(current-language-environment "UTF-8")
- '(custom-safe-themes (quote ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "a3821772b5051fa49cf567af79cc4dabfcfd37a1b9236492ae4724a77f42d70d" "b42cf9ee9e59c3aec585fff1ce35acf50259d8b59f3047e57df0fa38516aa335" "0ae977e603e99d89c80d679377bfed4a904317968bd885ee063455cee01728d3" "d96768f6fb4ccf7f443f0c1f95cf710fd0fafb1b5b042670f83078b516ab1f1e" "8016855a07f289a6b2deb248e192633dca0165f07ee5d51f9ba982ec2c36797d" "e4a37a67a646afe50263ed5a36c74e6dec615139065bbffe80beb2fb1b582047" default)))
+ '(custom-safe-themes
+   (quote
+    ("12b4427ae6e0eef8b870b450e59e75122d5080016a9061c9696959e50d578057" "ad950f1b1bf65682e390f3547d479fd35d8c66cafa2b8aa28179d78122faa947" "4f5bb895d88b6fe6a983e63429f154b8d939b4a8c581956493783b2515e22d6d" "52588047a0fe3727e3cd8a90e76d7f078c9bd62c0b246324e557dfa5112e0d0c" "bf14d1e09123b72d2929be172918ac27f84ac39798ad26a5d697ba22381b20e7" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "a3821772b5051fa49cf567af79cc4dabfcfd37a1b9236492ae4724a77f42d70d" "b42cf9ee9e59c3aec585fff1ce35acf50259d8b59f3047e57df0fa38516aa335" "0ae977e603e99d89c80d679377bfed4a904317968bd885ee063455cee01728d3" "d96768f6fb4ccf7f443f0c1f95cf710fd0fafb1b5b042670f83078b516ab1f1e" "8016855a07f289a6b2deb248e192633dca0165f07ee5d51f9ba982ec2c36797d" "e4a37a67a646afe50263ed5a36c74e6dec615139065bbffe80beb2fb1b582047" default)))
  '(custom-theme-directory "/home/epetorp/elisp")
  '(default-input-method "rfc1345")
  '(delete-auto-save-files nil)
@@ -203,4 +213,9 @@
     (setq tab-width 4)))
 
 
-(custom-set-faces)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
