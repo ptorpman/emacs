@@ -113,7 +113,10 @@
 (load-file "~/emacs/themes/color-theme-mac-classic.el")
 (color-theme-mac-classic)
 
-(set-frame-font "Inconsolata:pixelsize=14")
+;;(set-frame-font "Inconsolata:pixelsize=14")
+;;(set-frame-font "Anonymous Pro:pixelsize=14")
+(set-frame-font "Code New Roman:pixelsize=14")
+
 
 (set-frame-size-according-to-resolution)
 
@@ -154,6 +157,7 @@
  '(imenu-sort-function (quote imenu--sort-by-name))
  '(indent-tabs-mode nil)
  '(indicate-buffer-boundaries (quote right))
+ '(jshint-mode-jshintrc "/home/peter/nmt/intyg/.jshintrc")
  '(mode-line-in-non-selected-windows t)
  '(mode-line-inverse-video t)
  '(paren-mode (quote sexp) t (paren))
@@ -167,6 +171,26 @@
  '(toolbar-visible-p nil)
  '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify))
  '(which-function-mode t))
+
+
+
+
+;;----------------------------------------------------------
+;; JS Hint
+;;----------------------------------------------------------
+(add-to-list 'load-path "/home/peter/projects/emacs/jshint-mode")
+(require 'flymake-jshint)
+(add-hook 'javascript-mode-hook
+    (lambda () (flymake-mode t)))
+
+(add-hook 'find-file-hook 'flymake-find-file-hook)
+
+(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
+(setq exec-path
+      '(
+    "/usr/local/bin"
+    "/usr/bin"
+    ))
 
 
 ;;----------------------------------------------------------
@@ -205,3 +229,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
+
