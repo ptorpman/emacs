@@ -9,7 +9,7 @@
            (add-to-list 'default-frame-alist (cons 'width 120))
            (add-to-list 'default-frame-alist (cons 'width 80)))
     (add-to-list 'default-frame-alist 
-         (cons 'height (/ (- (x-display-pixel-height) 100)
+         (cons 'height (/ (- (x-display-pixel-height) 80)
                              (frame-char-height)))))))
 
 
@@ -115,10 +115,10 @@
 
 ;;(set-frame-font "Inconsolata:pixelsize=14")
 ;;(set-frame-font "Anonymous Pro:pixelsize=14")
-(set-frame-font "Code New Roman:pixelsize=14")
+(set-frame-font "Droid Sans Mono:pixelsize=12")
 
 
-(set-frame-size-according-to-resolution)
+;;(set-frame-size-according-to-resolution)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -157,7 +157,7 @@
  '(imenu-sort-function (quote imenu--sort-by-name))
  '(indent-tabs-mode nil)
  '(indicate-buffer-boundaries (quote right))
- '(jshint-mode-jshintrc "/home/peter/nmt/intyg/.jshintrc")
+ '(jshint-mode-jshintrc "/home/peter/emacs/.jshint")
  '(mode-line-in-non-selected-windows t)
  '(mode-line-inverse-video t)
  '(paren-mode (quote sexp) t (paren))
@@ -176,22 +176,24 @@
 
 
 ;;----------------------------------------------------------
+;; MELPA - Package installation
+;;----------------------------------------------------------
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+(package-initialize)
+
+;; M-x package-install RET flycheck
+;; M-x package-install RET flymake-easy
+;; M-x package-install RET flymake-jslint
+;; M-x package-install RET flymake-jshint
+
+
+;;----------------------------------------------------------
 ;; JS Hint
 ;;----------------------------------------------------------
-(add-to-list 'load-path "/home/peter/projects/emacs/jshint-mode")
 (require 'flymake-jshint)
-(add-hook 'javascript-mode-hook
-    (lambda () (flymake-mode t)))
-
-(add-hook 'find-file-hook 'flymake-find-file-hook)
-
-(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
-(setq exec-path
-      '(
-    "/usr/local/bin"
-    "/usr/bin"
-    ))
-
+(add-hook 'js-mode-hook 'flycheck-mode)
 
 ;;----------------------------------------------------------
 ;; Guess Style
@@ -217,10 +219,10 @@
 
 
 (add-hook 'python-mode-hook
-  (lambda ()
-    (setq indent-tabs-mode nil)
-    (setq python-indent 4)
-    (setq tab-width 4)))
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            (setq python-indent 4)
+            (setq tab-width 4)))
 
 
 (custom-set-faces

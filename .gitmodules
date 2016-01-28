@@ -1,3 +1,12 @@
 [submodule "jshint-mode"]
 	path = jshint-mode
 	url = git://github.com/daleharvey/jshint-mode.git
+[submodule "flymake-jshint"]
+	path = flymake-jshint
+	url = https://github.com/Wilfred/flymake-jshint.el.git
+[submodule "flymake-easy"]
+	path = flymake-easy
+	url = https://github.com/purcell/flymake-easy.git
+[submodule "flycheck"]
+	path = flycheck
+	url = https://github.com/flycheck/flycheck.git
