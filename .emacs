@@ -81,14 +81,14 @@
 ;;----------------------------------------------------------
 ;; JS Hint
 ;;----------------------------------------------------------
-(add-to-list 'load-path "/home/peter/projects/emacs/jshint-mode")
-(add-to-list 'load-path "/home/peter/projects/emacs/flycheck")
+;;(add-to-list 'load-path "/home/peter/projects/emacs/jshint-mode")
+;;(add-to-list 'load-path "/home/peter/projects/emacs/flycheck")
 
-(require 'flycheck)
-(add-hook 'java-script-mode-mode-hook
-          (lambda () (flycheck-mode t)))
+;; (require 'flycheck)
+;; (add-hook 'java-script-mode-mode-hook
+;;           (lambda () (flycheck-mode t)))
 
-(add-hook 'after-init-hook #'global-flycheck-mode)
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;;----------------------------------------------------------
 ;; Mode Specific: Python
@@ -131,7 +131,7 @@
 ;;(load-file "~/emacs/themes/color-theme-mac-classic.el")
 ;;(color-theme-mac-classic)
 
-(set-frame-font "Inconsolata:pixelsize=14")
+;;(set-frame-font "Screen:pixelsize=14")
 
 ;;(set-frame-size-according-to-resolution)
 
@@ -155,10 +155,8 @@
  '(cua-remap-control-v nil)
  '(cua-remap-control-z nil)
  '(current-language-environment "UTF-8")
- '(custom-safe-themes
-   (quote
-    ("cde4592248d2269f335110b935c3910bbbc5b9ee7f7bcbafb5df2b47dcbe78d4" "86cf4472f6a472dec2d7910a61ae2c127b8804f6397c7a5366af4a8ce4c1c160" "4f5bb895d88b6fe6a983e63429f154b8d939b4a8c581956493783b2515e22d6d" "ad950f1b1bf65682e390f3547d479fd35d8c66cafa2b8aa28179d78122faa947" default)))
- '(custom-theme-directory "/home/epetorp/elisp")
+ '(custom-safe-themes (quote ("cde4592248d2269f335110b935c3910bbbc5b9ee7f7bcbafb5df2b47dcbe78d4" "86cf4472f6a472dec2d7910a61ae2c127b8804f6397c7a5366af4a8ce4c1c160" "4f5bb895d88b6fe6a983e63429f154b8d939b4a8c581956493783b2515e22d6d" "ad950f1b1bf65682e390f3547d479fd35d8c66cafa2b8aa28179d78122faa947" default)))
+ '(custom-theme-directory "/home/ptorpman/emaxcs/themes")
  '(custom-theme-load-path (quote ("~/emacs/themes/")))
  '(default-input-method "rfc1345")
  '(delete-auto-save-files nil)
@@ -174,7 +172,7 @@
  '(imenu-sort-function (quote imenu--sort-by-name))
  '(indent-tabs-mode nil)
  '(indicate-buffer-boundaries (quote right))
- '(jshint-mode-jshintrc "/home/peter/emacs/.jshint")
+ '(jshint-mode-jshintrc "/home/ptorpman/emacs/.jshint")
  '(make-backup-files nil)
  '(mode-line-in-non-selected-windows t)
  '(mode-line-inverse-video t)
@@ -210,8 +208,8 @@
 ;;----------------------------------------------------------
 ;; JS Hint
 ;;----------------------------------------------------------
-(require 'flymake-jshint)
-(add-hook 'js-mode-hook 'flycheck-mode)
+;; (require 'flymake-jshint)
+;; (add-hook 'js-mode-hook 'flycheck-mode)
 
 ;;----------------------------------------------------------
 ;; Guess Style
@@ -248,7 +246,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:family "DejaVu Sans Mono" :foundry "unknown" :slant normal :weight normal :height 116 :width normal)))))
 
 
 
